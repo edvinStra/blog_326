@@ -11,6 +11,4 @@ page-layout: full
 title-block-banner: true
 ---
 
-# 
-
-Everything here goes right under top left corner
+Edvin Strandberg Final Portfolio Math Stat 326 Blog
