@@ -1,0 +1,207 @@
+---
+title: "Mini Project 4: Bayesian Analysis"
+---
+
+```{r}
+library(tidyverse)
+```
+
+
+## Priors
+
+```{r}
+ps <- seq(0, 1, length.out = 1000)
+
+## Non-informative Prior
+non_informative_prior <- dbeta(ps, 1,1)
+
+```
+
+```{r}
+## Prior Asssuming 46 out of 66 points on his own serve. The standard error of this estimate is 0.05657.
+
+target_mean <- 46 / 66
+
+alphas <- seq(0.1, 150, length.out = 500)
+betas <- 0.3031 * alphas / 0.6969
+
+param_df <- tibble(alphas, betas)
+param_df <- param_df |> 
+  mutate(vars = (alphas * betas) / ((alphas+betas)^2 * 
+                                          (alphas+betas+1)))
+
+
+target_var <- 0.05657^2
+
+param_df <- param_df |> mutate(dist_to_target = abs(vars - target_var))
+
+
+param_df |> filter(dist_to_target == min(dist_to_target))
+
+informative_prior_one <- dbeta(ps, 45.2, 19.6)
+```
+
+```{r}
+## Informative prior assuming who claims that they think Nadal wins about 75% of the points on his serve against Djokovic. They are also “almost sure” that Nadal wins no less than 70% of his points on serve against Djokovic.
+
+alpha <- seq(0.01, 300, length.out = 1000)
+betas <- 0.25* alpha / 0.75
+possible_params <- tibble(alpha, betas)
+possible_params
+```
+
+```{r}
+## want alpha and beta such that pbeta(0.7, alpha, beta) = some small value which is up to us to choose
+## I will choose 0.05 since it said "almost sure"
+
+possible_params |> mutate(probs = pbeta(0.7, alpha, betas)) |> 
+  mutate(dist_to_target = abs(probs - 0.05)) |>
+  filter(dist_to_target == min(dist_to_target))
+
+## Changing the "small value" has a big effect on the paramneters in the prior. You could argue this makes this prior worse or at least harder to get correct. 
+
+## When changing the value to 0.02, alpha goes from 160 to 252 and beta from 53.3 to 83.9
+
+informative_prior_two <- dbeta(ps, 160, 53.3)
+```
+
+## Plot priors
+
+```{r}
+# create df with ps and all priors
+prior_plot_df <- tibble(ps, non_informative_prior, informative_prior_one,
+                  informative_prior_two) |>
+  pivot_longer(2:4, names_to = "distribution", values_to = "density")
+
+# Color by distribtuin, had to rmeove separate because i had different variable names
+ggplot(data = prior_plot_df, aes(x = ps, y = density, colour = distribution)) +
+  geom_line() +
+  scale_colour_viridis_d(end = 0.9) +
+  theme_minimal() +
+  labs(x = "p")
+```
+
+## Posteriors
+
+We know since before that the posterior will follow a beta(alpha + yobs, n - yobs + beta) distribution.
+In our case, yobs = 56 and n = 84. 
+
+```{r}
+non_informative_posterior <- dbeta(ps, 1 + 56, 84 - 56 +1)
+
+informative_posterior_one <- dbeta(ps, 45.2 + 56, 84 - 56 + 19.6)
+
+informative_posterior_two <- dbeta(ps, 160 + 56, 84 - 56 + 53.3)
+```
+
+### Posterior Plot
+
+```{r}
+posterior_plot_df <- tibble(ps, non_informative_posterior, informative_posterior_one,
+                  informative_posterior_two) |>
+  pivot_longer(2:4, names_to = "distribution", values_to = "density")
+
+# Color by distribtuin, had to rmeove separate because i had different variable names
+ggplot(data = posterior_plot_df, aes(x = ps, y = density, colour = distribution)) +
+  geom_line() +
+  scale_colour_viridis_d(end = 0.9) +
+  theme_minimal() +
+  labs(x = "p")
+```
+
+### Bayes Estimates and Credible Intervals
+
+```{r}
+## Non-informative Bayes estimate
+(1+56) / (84 - 56 +1 + 1 + 56)
+
+## Informative one Bayes estimate
+(45.2 + 56) /  (84 - 56 + 19.6 + 45.2 + 56)
+
+## Informartive two Bayes estimate
+(160 + 56) /  (84 - 56 + 53.3 + 160 + 56)
+
+```
+
+Posterior means:
+
+Non-informative posterior mean: 0.6627907
+Informative posterior mean 1: 0.6801075
+Informative Posterior mean 2: 0.7265388
+
+
+### 90% credible intervals for p 
+
+```{r}
+## Non-informative 90% credible interval for p
+qbeta(c(0.05, 0.95), 57, 29)
+
+## Informative one 90% credible interval for p
+qbeta(c(0.05, 0.95), 101.2, 47.6)
+
+## Informative two 90% credible interval for p
+qbeta(c(0.05, 0.95), 216, 81.3)
+```
+
+Non-informative 90% credible interval for p: (0.5772453, 0.7440061)
+Informative 1 90% credible interval for p: (0.6160421, 0.7414111)
+Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
+
+
+
+## Project Report
+
+In this project we try to model the probability that Nadal wins a point on his serve when playing on a clay surface. I will answer this question by trying a couple different prior distributions that have different assumptions, combine them with the given data, and compare the three different posterior distributions to see which one I think best models the data. 
+
+typed work justifying the decisions you made to create the two informative priors. What did you assume when you made those priors?
+
+For the first informative prior distribution I assumed that the prior follow a similar distribtuion as the given data so I set the mean of the prior beta distribution to p_hat and solved for beta. I used this information to construct a df with possible alpha and beta combinations. I then used the standard deviation from the data to find the alpha and beta that best fit the data. 
+
+For the second informative prior distribution I used the information given from the sports announcer. I solved for alpha and beta using the target mean. To find the combination of alpha and beta that best fits the sports announcer's guess I solved for the alpha and beta that have as close as possible to 5% chance of the proportion of serves being less than 70%. I chose 5% because of the announcer's wording of being "almost sure". I believe any number between 2% and 15% would be a reasonable guess. This is a weakness of bayesian models, the priors can be subjective and different priors can lead to very different results. 
+
+#### Priors Plot
+
+```{r}
+ggplot(data = prior_plot_df, aes(x = ps, y = density, colour = distribution)) +
+  geom_line() +
+  scale_colour_viridis_d(end = 0.9) +
+  theme_minimal() +
+  labs(x = "p")
+```
+
+#### Posteriors Plot
+
+To obtain my posteriors I used the fact we saw in class that if you have a beta prior and binomial data, the posterior distribution is Beta(alpha_post = alpha_prior + yobs, beta_post = n - yobs + beta_prior)
+
+From the data I see that yobs = 56 and that n = 84. I then apply this equation to all three of my priors to obtain the three posteriors. 
+
+```{r}
+ggplot(data = posterior_plot_df, aes(x = ps, y = density, colour = distribution)) +
+  geom_line() +
+  scale_colour_viridis_d(end = 0.9) +
+  theme_minimal() +
+  labs(x = "p")
+```
+
+I used the alpha and beta for each posterior to calculate the posterior mean in the following way:
+alpha / alpha + beta
+
+Posterior means:
+
+Non-informative posterior mean: 0.6627907
+Informative posterior mean 1: 0.6801075
+Informative Posterior mean 2: 0.7265388
+
+I used the qbeta function to obtain the 90% credible intervals which can be found in the code above. 
+
+Non-informative 90% credible interval for p: (0.5772453, 0.7440061)
+Informative 1 90% credible interval for p: (0.6160421, 0.7414111)
+Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
+
+There is a 90% probability that Nadal wins between 57.7 and 74.4% of the points when he's serving on clay if we use the non_informative prior. The interval is 61.6% to 74.1% if we use data from the past match against Djokovic to construct our prior and 68.3% to 76.8% if we use the sports announcer's estimate and a 5% "small number" to construct our prior.  
+
+The posteriors are different from each other because they have different prior distributions that are assuming different things about Nadal's ability to win points on his serve. I would probably choose the second posterior because I think that it makes the most sense to base thge prior on actual data. However, I would prefer to have more than one data point to base my prior on. The data used might not be representative of Nadal's ability to hold his serve against other players than Djokovic or even agisnt other matches against Djokovic. Even with these caveats I believe it's the best prior because it contains more information than the non_informative prior. The second informative prior could be a good choice but I don't like the subjectivity of choosing a "almost sure" number and how big the difference is in alphas and betas based of different "small numbers".  
+
+I think the second informative posterior has a lower variance than the other two because we kind of artificially create this low variance by restricting the prior model to have a low probability, in my case 5% that the proportion of points won on serve is less than 70%. This will give the prior a low variance which we can also see in the posterior. 
+
+In this project, I found three different bayesian models that try to predict what proportion of points Nadal will win on his serve when playing on clay. By trying three different prior distributions, I can compre my assumptions and the resulting posteriors and choose the model I deem best. We see that the models predict that Nadal will win between 66.3 and 72.6% of the points on his serve. 

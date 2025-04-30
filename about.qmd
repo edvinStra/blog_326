@@ -1,0 +1,44 @@
+---
+title: "About"
+image: profile.jpg
+about:
+  template: jolla
+  links:
+    - icon: twitter
+      text: Twitter
+      href: https://twitter.com
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com
+    - icon: github
+      text: Github
+      href: https://github.com
+---
+
+The first mini project was about simulation and used many techniques that we saw later on in the course. It was the first time we looped through a function which we did many times later with both bootstrapping and empirical power tests. We also used many density functions that we worked with a lot throughout the semester such as the exponential and beta distribution. 
+
+
+
+
+
+
+
+
+
+For this option, you will create a Quarto Blog/Website containing your 5 mini-projects, and write a reflection that ties the mini-projects together and gives biggest take-aways from each project.
+
+Your reflection should either go in the `about.qmd` file that appears at the root directory of the `R Project`, the `index.qmd` file that also appears at the root directory of the `R Project`, or in a separate blog post. The rendered `.html` file from `about.qmd` essentially serves as the home page for the blog. The reflection should be about 5 paragraphs or so and should address:
+
+1.  how each mini-project ties in to other content in the course.
+
+2.  how each mini-project ties in with some other mini-projects (note that some mini-projects are more connected than others: you do not need to “connect” every single mini-project with every other mini-project).
+
+3.  your biggest take-aways from these mini-projects (these should not be copy-pasted from the “take-away” section of any of your original mini-projects: the expectation is that, now that we have gone through the entire course, your take-aways may be more sophisticated now).
+
+Some extra notes:
+
+-   mini-project 1 is the only mini-project that had substantial handwritten work. You do **not** need to include the handwritten derivations in the blog.
+
+-   if, for other mini-projects, you have things that you submitted that you wrote by hand, you can embed these as images in quarto using `knitr::include_graphics("path_to_image.jpg")`.
+
+-   as you are creating your five posts for the five mini-projects, note that the `.qmd` file **must** be named `index.qmd` within each folder and that the folder itself cannot have any spaces or special characters in its name.
