@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>blog_326</title>
+<title>blog_326 - About</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,12 +30,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -61,43 +58,12 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed fullcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -115,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link active" href="./about.html" rel="" target="" aria-current="page">
  <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
@@ -136,189 +102,58 @@ ul.task-list li input[type="checkbox"] {
     </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-page-left">
-      <h1 class="title">blog_326</h1>
-                      </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(6)</span></div></div></div>
+    
 <!-- main -->
-<main class="content quarto-banner-title-block column-page-left" id="quarto-document-content">
+<div class="quarto-about-jolla">
+  <img src="profile.jpg" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">About</h1>
+</div>
+<div class="quarto-title-meta">
+  </div>
+</header><main class="content" id="quarto-document-content">
+<p>The first mini project was about simulation and used many techniques that we saw later on in the course. It was the first time we looped through a function which we did many times later with both bootstrapping and empirical power tests. We also used many density functions that we worked with a lot throughout the semester such as the exponential and beta distribution. My biggest takeaway form mini project 1 was probably how useful simulation can be in statistics and I thoguth it was cool that the theoretcial results were closely matched with the simulated results,</p>
+<p>The second mini project was about showing our understanding of different statistical terms and to use them in context of a meaningful story. This is something that has been important throughout the course as we have been prompted to interpret results in context of a problem and explain certain statistical terms or techniques in plain English throughout the course. This project really made me think about the meaning of the terms we had been using so far in the semester and it challenged my understanding of the concepts in a good wat.</p>
+<p>This project was somewhat similar to mini project 5 where we answered questions based of an article arguing that relying on arbitrary thresholds for p-value is not statistically sounds. Both these projects were geared towards a higher level understanding of concepts than actual calculations. I had many takeaways from this article and the put a lot of thoguht into my answers. Something that will stick with me is when the authors said that there is no signification difference between a significant and insignificant test.</p>
+<p>Mini project 3 was about confidence interval assumptions and brought back some simulation techniques such as looping through a fucntion from mini project 1. This project showcased the importance of assumptions and the consequences if assumptions are broken, something that we have talked about hroguhout the course and something I remember talking about in stat 113. This project was important to show how results can differ when assumptions are broken and it tied into mini project 4 about Bayesian analysis well. In mini project 4 we worked with different prior distributions to reach a posterior distribution and it was important to know what assumptions each prior distribution was believing to be true. Apart from the assumption and interpreting in context part of mini project 4, it kind of stood out among the projects as it was the only project where we did not with frequentist statistics.</p>
+<p>For this option, you will create a Quarto Blog/Website containing your 5 mini-projects, and write a reflection that ties the mini-projects together and gives biggest take-aways from each project.</p>
+<p>Your reflection should either go in the <code>about.qmd</code> file that appears at the root directory of the <code>R Project</code>, the <code>index.qmd</code> file that also appears at the root directory of the <code>R Project</code>, or in a separate blog post. The rendered <code>.html</code> file from <code>about.qmd</code> essentially serves as the home page for the blog. The reflection should be about 5 paragraphs or so and should address:</p>
+<ol type="1">
+<li><p>how each mini-project ties in to other content in the course.</p></li>
+<li><p>how each mini-project ties in with some other mini-projects (note that some mini-projects are more connected than others: you do not need to “connect” every single mini-project with every other mini-project).</p></li>
+<li><p>your biggest take-aways from these mini-projects (these should not be copy-pasted from the “take-away” section of any of your original mini-projects: the expectation is that, now that we have gone through the entire course, your take-aways may be more sophisticated now).</p></li>
+</ol>
+<p>Some extra notes:</p>
+<ul>
+<li><p>mini-project 1 is the only mini-project that had substantial handwritten work. You do <strong>not</strong> need to include the handwritten derivations in the blog.</p></li>
+<li><p>if, for other mini-projects, you have things that you submitted that you wrote by hand, you can embed these as images in quarto using <code>knitr::include_graphics("path_to_image.jpg")</code>.</p></li>
+<li><p>as you are creating your five posts for the five mini-projects, note that the <code>.qmd</code> file <strong>must</strong> be named <code>index.qmd</code> within each folder and that the folder itself cannot have any spaces or special characters in its name.</p></li>
+</ul>
 
 
-
-
-<section id="section" class="level1">
-<h1></h1>
-<p>Everything here goes right under top left corner</p>
-
-
-
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1745861724765" data-listing-reading-time-sort="4">
-<div class="thumbnail">
-<p><a href="./posts/02-meaningful-story/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/02-meaningful-story/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/02-meaningful-story/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 2: A Meaningful Story
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/02-meaningful-story/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/02-meaningful-story/index.html"> </a>
+</main> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://twitter.com" class="about-link" rel="" target="">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
+  </a>
+  <a href="https://linkedin.com" class="about-link" rel="" target="">
+    <i class="bi bi-linkedin"></i>
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://github.com" class="about-link" rel="" target="">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">Github</span>
+  </a>
 </div>
 </div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1745864175628" data-listing-reading-time-sort="11">
-<div class="thumbnail">
-<p><a href="./posts/05-p-values/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/05-p-values/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/05-p-values/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 5: Advantages and Drawbacks of Using p-values
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/05-p-values/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/05-p-values/index.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1745861677324" data-listing-reading-time-sort="8">
-<div class="thumbnail">
-<p><a href="./posts/04-bayesian-analysis/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/04-bayesian-analysis/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/04-bayesian-analysis/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 4: Bayesian Analysis
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/04-bayesian-analysis/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/04-bayesian-analysis/index.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1745861723625" data-listing-reading-time-sort="9">
-<div class="thumbnail">
-<p><a href="./posts/03-Confidence-intervals-assumptions/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/03-Confidence-intervals-assumptions/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/03-Confidence-intervals-assumptions/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 3: Confidence Interval Assumptions
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/03-Confidence-intervals-assumptions/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/03-Confidence-intervals-assumptions/index.html"> </a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-date-sort="1738126800000" data-listing-file-modified-sort="1745864168747" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19">
-<div class="thumbnail">
-<p><a href="./posts/01-simulation/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/01-simulation/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/01-simulation/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 1
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/01-simulation/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/01-simulation/index.html">
-<div class="listing-date">
-Jan 29, 2025
-</div>
-<div class="listing-author">
-Edvin Stranberg
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-date-sort="1738126800000" data-listing-file-modified-sort="1745864180934" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19">
-<div class="thumbnail">
-<p><a href="./posts/01-simulation/index.html"> <!-- img(9CEB782EFEE6)[progressive=false, height=]:posts/01-simulation/index.html --> </a></p>
-</div>
-<div class="body">
-<a href="./posts/01-simulation/index.html">
-<h3 class="no-anchor listing-title">
-Mini Project 1
-</h3>
-<div class="listing-subtitle">
-
-</div>
-<div class="listing-description">
-<!-- desc(5A0113B34292)[max=175]:posts/01-simulation/index.html -->
-</div>
-</a>
-</div>
-<div class="metadata">
-<a href="./posts/01-simulation/index.html">
-<div class="listing-date">
-Jan 29, 2025
-</div>
-<div class="listing-author">
-Edvin Stranberg
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">
-No matching items
-</div>
-</div></main> <!-- /main -->
+ <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -339,13 +174,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     

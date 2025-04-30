@@ -6,7 +6,6 @@ title: "Mini Project 4: Bayesian Analysis"
 library(tidyverse)
 ```
 
-
 ## Priors
 
 ```{r}
@@ -83,8 +82,7 @@ ggplot(data = prior_plot_df, aes(x = ps, y = density, colour = distribution)) +
 
 ## Posteriors
 
-We know since before that the posterior will follow a beta(alpha + yobs, n - yobs + beta) distribution.
-In our case, yobs = 56 and n = 84. 
+We know since before that the posterior will follow a beta(alpha + yobs, n - yobs + beta) distribution. In our case, yobs = 56 and n = 84.
 
 ```{r}
 non_informative_posterior <- dbeta(ps, 1 + 56, 84 - 56 +1)
@@ -125,12 +123,9 @@ ggplot(data = posterior_plot_df, aes(x = ps, y = density, colour = distribution)
 
 Posterior means:
 
-Non-informative posterior mean: 0.6627907
-Informative posterior mean 1: 0.6801075
-Informative Posterior mean 2: 0.7265388
+Non-informative posterior mean: 0.6627907 Informative posterior mean 1: 0.6801075 Informative Posterior mean 2: 0.7265388
 
-
-### 90% credible intervals for p 
+### 90% credible intervals for p
 
 ```{r}
 ## Non-informative 90% credible interval for p
@@ -143,21 +138,17 @@ qbeta(c(0.05, 0.95), 101.2, 47.6)
 qbeta(c(0.05, 0.95), 216, 81.3)
 ```
 
-Non-informative 90% credible interval for p: (0.5772453, 0.7440061)
-Informative 1 90% credible interval for p: (0.6160421, 0.7414111)
-Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
-
-
+Non-informative 90% credible interval for p: (0.5772453, 0.7440061) Informative 1 90% credible interval for p: (0.6160421, 0.7414111) Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
 
 ## Project Report
 
-In this project we try to model the probability that Nadal wins a point on his serve when playing on a clay surface. I will answer this question by trying a couple different prior distributions that have different assumptions, combine them with the given data, and compare the three different posterior distributions to see which one I think best models the data. 
+In this project we try to model the probability that Nadal wins a point on his serve when playing on a clay surface. I will answer this question by trying a couple different prior distributions that have different assumptions, combine them with the given data, and compare the three different posterior distributions to see which one I think best models the data.
 
 typed work justifying the decisions you made to create the two informative priors. What did you assume when you made those priors?
 
-For the first informative prior distribution I assumed that the prior follow a similar distribtuion as the given data so I set the mean of the prior beta distribution to p_hat and solved for beta. I used this information to construct a df with possible alpha and beta combinations. I then used the standard deviation from the data to find the alpha and beta that best fit the data. 
+For the first informative prior distribution I assumed that the prior follow a similar distribtuion as the given data so I set the mean of the prior beta distribution to p_hat and solved for beta. I used this information to construct a df with possible alpha and beta combinations. I then used the standard deviation from the data to find the alpha and beta that best fit the data.
 
-For the second informative prior distribution I used the information given from the sports announcer. I solved for alpha and beta using the target mean. To find the combination of alpha and beta that best fits the sports announcer's guess I solved for the alpha and beta that have as close as possible to 5% chance of the proportion of serves being less than 70%. I chose 5% because of the announcer's wording of being "almost sure". I believe any number between 2% and 15% would be a reasonable guess. This is a weakness of bayesian models, the priors can be subjective and different priors can lead to very different results. 
+For the second informative prior distribution I used the information given from the sports announcer. I solved for alpha and beta using the target mean. To find the combination of alpha and beta that best fits the sports announcer's guess I solved for the alpha and beta that have as close as possible to 5% chance of the proportion of serves being less than 70%. I chose 5% because of the announcer's wording of being "almost sure". I believe any number between 2% and 15% would be a reasonable guess. This is a weakness of bayesian models, the priors can be subjective and different priors can lead to very different results.
 
 #### Priors Plot
 
@@ -173,7 +164,7 @@ ggplot(data = prior_plot_df, aes(x = ps, y = density, colour = distribution)) +
 
 To obtain my posteriors I used the fact we saw in class that if you have a beta prior and binomial data, the posterior distribution is Beta(alpha_post = alpha_prior + yobs, beta_post = n - yobs + beta_prior)
 
-From the data I see that yobs = 56 and that n = 84. I then apply this equation to all three of my priors to obtain the three posteriors. 
+From the data I see that yobs = 56 and that n = 84. I then apply this equation to all three of my priors to obtain the three posteriors.
 
 ```{r}
 ggplot(data = posterior_plot_df, aes(x = ps, y = density, colour = distribution)) +
@@ -183,25 +174,20 @@ ggplot(data = posterior_plot_df, aes(x = ps, y = density, colour = distribution)
   labs(x = "p")
 ```
 
-I used the alpha and beta for each posterior to calculate the posterior mean in the following way:
-alpha / alpha + beta
+I used the alpha and beta for each posterior to calculate the posterior mean in the following way: alpha / alpha + beta
 
 Posterior means:
 
-Non-informative posterior mean: 0.6627907
-Informative posterior mean 1: 0.6801075
-Informative Posterior mean 2: 0.7265388
+Non-informative posterior mean: 0.6627907 Informative posterior mean 1: 0.6801075 Informative Posterior mean 2: 0.7265388
 
-I used the qbeta function to obtain the 90% credible intervals which can be found in the code above. 
+I used the qbeta function to obtain the 90% credible intervals which can be found in the code above.
 
-Non-informative 90% credible interval for p: (0.5772453, 0.7440061)
-Informative 1 90% credible interval for p: (0.6160421, 0.7414111)
-Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
+Non-informative 90% credible interval for p: (0.5772453, 0.7440061) Informative 1 90% credible interval for p: (0.6160421, 0.7414111) Informative 2 90% credible interval for p: (0.6832283, 0.7681138)
 
-There is a 90% probability that Nadal wins between 57.7 and 74.4% of the points when he's serving on clay if we use the non_informative prior. The interval is 61.6% to 74.1% if we use data from the past match against Djokovic to construct our prior and 68.3% to 76.8% if we use the sports announcer's estimate and a 5% "small number" to construct our prior.  
+There is a 90% probability that Nadal wins between 57.7 and 74.4% of the points when he's serving on clay if we use the non_informative prior. The interval is 61.6% to 74.1% if we use data from the past match against Djokovic to construct our prior and 68.3% to 76.8% if we use the sports announcer's estimate and a 5% "small number" to construct our prior.
 
-The posteriors are different from each other because they have different prior distributions that are assuming different things about Nadal's ability to win points on his serve. I would probably choose the second posterior because I think that it makes the most sense to base thge prior on actual data. However, I would prefer to have more than one data point to base my prior on. The data used might not be representative of Nadal's ability to hold his serve against other players than Djokovic or even agisnt other matches against Djokovic. Even with these caveats I believe it's the best prior because it contains more information than the non_informative prior. The second informative prior could be a good choice but I don't like the subjectivity of choosing a "almost sure" number and how big the difference is in alphas and betas based of different "small numbers".  
+The posteriors are different from each other because they have different prior distributions that are assuming different things about Nadal's ability to win points on his serve. I would probably choose the second posterior because I think that it makes the most sense to base thge prior on actual data. However, I would prefer to have more than one data point to base my prior on. The data used might not be representative of Nadal's ability to hold his serve against other players than Djokovic or even agisnt other matches against Djokovic. Even with these caveats I believe it's the best prior because it contains more information than the non_informative prior. The second informative prior could be a good choice but I don't like the subjectivity of choosing a "almost sure" number and how big the difference is in alphas and betas based of different "small numbers".
 
-I think the second informative posterior has a lower variance than the other two because we kind of artificially create this low variance by restricting the prior model to have a low probability, in my case 5% that the proportion of points won on serve is less than 70%. This will give the prior a low variance which we can also see in the posterior. 
+I think the second informative posterior has a lower variance than the other two because we kind of artificially create this low variance by restricting the prior model to have a low probability, in my case 5% that the proportion of points won on serve is less than 70%. This will give the prior a low variance which we can also see in the posterior.
 
-In this project, I found three different bayesian models that try to predict what proportion of points Nadal will win on his serve when playing on clay. By trying three different prior distributions, I can compre my assumptions and the resulting posteriors and choose the model I deem best. We see that the models predict that Nadal will win between 66.3 and 72.6% of the points on his serve. 
+In this project, I found three different bayesian models that try to predict what proportion of points Nadal will win on his serve when playing on clay. By trying three different prior distributions, I can compre my assumptions and the resulting posteriors and choose the model I deem best. We see that the models predict that Nadal will win between 66.3 and 72.6% of the points on his serve.

@@ -1,8 +1,7 @@
 ---
 title: "Mini Project 1"
-author: "Edvin Stranberg"
-date: "Jan 29, 2025"
 ---
+
 
 ```{r}
 library(tidyverse)
